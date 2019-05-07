@@ -1,7 +1,8 @@
 package springuru.springguru.model;
 
-public class PetType {
-    //Defines PeTttype
+public class PetType extends BaseEntity {
+	private static final long serialVersionUID = 1L;
+	// Defines PeTttype
 	private String name;
 
 	//
