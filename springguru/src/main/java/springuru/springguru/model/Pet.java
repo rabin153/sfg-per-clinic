@@ -3,7 +3,7 @@ package springuru.springguru.model;
 import java.time.LocalDate;
 
 public class Pet {
-
+	// Pet Type
 	private PetType petType;
 	private Owner owner;
 	private LocalDate birthDate;
