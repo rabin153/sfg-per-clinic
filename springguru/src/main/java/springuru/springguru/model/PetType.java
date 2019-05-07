@@ -4,6 +4,7 @@ public class PetType {
     //Defines PeTttype
 	private String name;
 
+	//
 	public String getName() {
 		return name;
 	}
