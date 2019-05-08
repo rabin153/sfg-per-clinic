@@ -29,9 +29,10 @@ public abstract class AbstractMapService<T, ID> {
 	}
 
 	public void delete(T object) {
-//		Object object2 = map.entrySet();
-//		if (object2.equals(object)) {
-//			map.remove(object2);
+//		for (Object o : map.entrySet()) {
+//			if (o.equals(object)) {
+//				map.remove(o);
+//			}
 //		}
 		// short cut for above methods
 		map.entrySet().removeIf(entry -> entry.getValue().equals(object));
