@@ -1,15 +1,19 @@
 package springuru.springguru.service.map;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
-public abstract class AbstractMapService<T, ID> {
+import springuru.springguru.model.BaseEntity;
+
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
 	// concrete implementation for common methods of interface using Map
 
-	protected Map<ID, T> map = new HashMap<>();
+	protected Map<Long, T> map = new HashMap<>();
 
 	public Set<T> findAll() {
 		return new HashSet<>(map.values());
@@ -19,8 +23,18 @@ public abstract class AbstractMapService<T, ID> {
 		return map.get(id);
 	}
 
-	public T save(ID id, T object) {
-		map.put(id, object);
+	public T save(T object) {
+		// if object is not null go and get the id
+		// if object is null grab the id and set via NextId mehtod
+		if (object != null) {
+			if (object.getId() == null) {
+				object.setId(getNextId());
+			}
+			map.put(object.getId(), object);
+		} else {
+			// if object is null throw exception
+			throw new RuntimeException("Object cannot be null");
+		}
 		return object;
 	}
 
@@ -36,6 +50,16 @@ public abstract class AbstractMapService<T, ID> {
 //		}
 		// short cut for above methods
 		map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+	}
+
+	public Long getNextId() {
+		Long nextId = null;
+		try {
+			nextId = Collections.max(map.keySet()) + 1;
+		} catch (NoSuchElementException e) {
+			nextId = 1L;
+		}
+		return nextId;
 	}
 
 }
