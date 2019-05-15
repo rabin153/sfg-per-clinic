@@ -7,7 +7,7 @@ public class Vet extends Person {
 
 	private static final long serialVersionUID = 1L;
 
-	// should be initialized
+	// should be initialized otherwise will be blow up
 	private Set<Speciality> specialities = new HashSet<>();
 
 	public Set<Speciality> getSpecialities() {
