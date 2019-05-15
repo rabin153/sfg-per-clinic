@@ -1,32 +1,33 @@
-package springuru.springguru.service;
+package springuru.springguru.service.servicemap;
 
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import springuru.springguru.model.Vet;
+import springuru.springguru.model.Pet;
+import springuru.springguru.service.PetService;
 import springuru.springguru.service.map.AbstractMapService;
 
 @Service
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
 	@Override
-	public Set<Vet> findAll() {
+	public Set<Pet> findAll() {
 		return super.findAll();
 	}
 
 	@Override
-	public Vet findById(Long id) {
+	public Pet findById(Long id) {
 		return super.findById(id);
 	}
 
 	@Override
-	public Vet save(Vet object) {
+	public Pet save(Pet object) {
 		return super.save(object);
 	}
 
 	@Override
-	public void delete(Vet object) {
+	public void delete(Pet object) {
 		super.delete(object);
 	}
 
