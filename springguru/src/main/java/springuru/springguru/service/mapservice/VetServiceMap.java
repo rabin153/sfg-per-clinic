@@ -1,4 +1,4 @@
-package springuru.springguru.service.servicemap;
+package springuru.springguru.service.mapservice;
 
 import java.util.Set;
 
