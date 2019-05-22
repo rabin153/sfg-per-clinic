@@ -2,13 +2,30 @@ package springuru.springguru.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "name")
 	private String name;
 	// Pet Type
+
+	@ManyToOne
+	@JoinColumn(name = "type+id")
 	private PetType petType;
+
+	@ManyToOne
+	@JoinColumn(name = "owner_id") // how this is related with owner in db
 	private Owner owner;
+
+	@Column(name = "birth_date")
 	private LocalDate birthDate;
 
 	public PetType getPetType() {
