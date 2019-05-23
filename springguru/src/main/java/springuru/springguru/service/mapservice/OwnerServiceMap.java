@@ -2,6 +2,7 @@ package springuru.springguru.service.mapservice;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import springuru.springguru.model.Owner;
@@ -12,6 +13,7 @@ import springuru.springguru.service.PetTypeService;
 import springuru.springguru.service.map.AbstractMapService;
 
 @Service
+@Profile({ "default", "map" })
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
 	private final PetTypeService petTypeService;

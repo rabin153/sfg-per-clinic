@@ -10,10 +10,12 @@ import springuru.springguru.model.Pet;
 import springuru.springguru.model.PetType;
 import springuru.springguru.model.Speciality;
 import springuru.springguru.model.Vet;
+import springuru.springguru.model.Visit;
 import springuru.springguru.service.OwnerService;
 import springuru.springguru.service.PetTypeService;
 import springuru.springguru.service.SpecialitesService;
 import springuru.springguru.service.VetService;
+import springuru.springguru.service.VisitService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -22,13 +24,15 @@ public class DataLoader implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petPetTypeService;
 	private final SpecialitesService specialitesService;
+	private final VisitService visitService;
 
 	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-			SpecialitesService specialitesService) {
+			SpecialitesService specialitesService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petPetTypeService = petTypeService;
 		this.specialitesService = specialitesService;
+		this.visitService = visitService;
 	}
 
 	@Override
@@ -94,6 +98,13 @@ public class DataLoader implements CommandLineRunner {
 		owner2.getPets().add(fianoasCat);
 
 		ownerService.save(owner2);
+
+		Visit catVisit = new Visit();
+		catVisit.setPet(fianoasCat);
+		catVisit.setDate(LocalDate.now());
+		catVisit.setDescription("Sneezy Kitty");
+
+		visitService.save(catVisit);
 
 		System.out.println("Loaded owners...........");
 

@@ -2,6 +2,7 @@ package springuru.springguru.service.mapservice;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import springuru.springguru.model.Speciality;
@@ -11,6 +12,7 @@ import springuru.springguru.service.VetService;
 import springuru.springguru.service.map.AbstractMapService;
 
 @Service
+@Profile({ "default", "map" })
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
 	private final SpecialitesService specilityService;
